@@ -288,6 +288,7 @@ export const CashierLandingPage = () => {
           <Row className="m-0">
             <div className="d-flex gap-2 flex-wrap">
               <Button
+                variant="warning"
                 className={
                   searchCategory === 0
                     ? "text-dark bg-warning border-warning py-0 px-3 card-cashier-page"
@@ -300,10 +301,11 @@ export const CashierLandingPage = () => {
               </Button>
               {categories.map((category, index) => (
                 <Button
+                  variant="warning"
                   key={`category-` + index}
                   className={
                     searchCategory === category.id
-                      ? "text-dark bg-[#D3A888] py-0 px-1 card-cashier-page"
+                      ? "text-dark bg-warning py-0 px-1 card-cashier-page"
                       : "text-dark bg-[#D3A774] border-[#D3A774] py-0 px-1 card-cashier-page"
                   }
                   id={`category` + category.id}
