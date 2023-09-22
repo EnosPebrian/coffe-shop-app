@@ -281,7 +281,6 @@ export const CashierLandingPage = () => {
       <Header />
       <Row className="m-0 mt-2">
         <Col className="xs-no-p-m">
-          {/* <Container> */}
           <Row className="mb-2 mx-0">
             <SearchboxBootstrap setSearchKey={setSearchKey} />
           </Row>
@@ -336,11 +335,9 @@ export const CashierLandingPage = () => {
                 );
               })}
           </Row>
-          {/* </Container> */}
         </Col>
         {showTransaction ? (
           <Col lg={4} xs={6} className="col">
-            {/* <Container> */}
             <Button
               className="mb-2 d-xxs-smallfont bg-[#D3A774] border-info-subtle text-dark"
               onClick={() => {
@@ -503,7 +500,6 @@ export const CashierLandingPage = () => {
                 </ListGroup.Item>
               </ListGroup>
             </Card>
-            {/* </Container> */}
           </Col>
         ) : (
           <Col xl={2} lg={3} xs={4} className="col">
