@@ -1,6 +1,5 @@
 {
   "name": "coffe-shop-app",
-  "homepage": "https://enospebrian.github.io/the-coffee-space-POS/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
