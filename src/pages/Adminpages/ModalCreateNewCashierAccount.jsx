@@ -83,7 +83,11 @@ export const ModalCreateNewCashierAccount = ({
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={formik.handleSubmit}>
+        <Button
+          variant="warning"
+          className="bg-[#D3A774] border-[#D3A774]"
+          onClick={formik.handleSubmit}
+        >
           Submit
         </Button>
       </Modal.Footer>

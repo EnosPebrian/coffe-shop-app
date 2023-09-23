@@ -59,13 +59,12 @@ export const PostCard = ({ product, fetchProducts }) => {
           fetchProducts={fetchProducts}
         />
         <td className="border px-4 py-2">{product.id}</td>
-        <td className="border px-4 py-2">
+        <td className="border">
           <img
             src={`${API_URL}/public/product/${product.imageName}`}
             width="100"
-            height="100"
             alt=""
-            objectFit="cover"
+            style={{ aspectRatio: "1/1", objectFit: "cover" }}
           />
         </td>
         <td className="border px-4 py-2">{product.productName}</td>

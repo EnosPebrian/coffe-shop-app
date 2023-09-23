@@ -116,97 +116,92 @@ export const CashierAccountManagement = () => {
         formik={formik}
       />
 
-      <Row style={{ margin: "0", minHeight: "95vh", height: "100%" }}>
+      <Row style={{ margin: "0", minHeight: "94vh", height: "100%" }}>
         <Col xl={2} lg={2} className="bg-[#D3A774] hidden-md">
           <Sidebar />
         </Col>
         <Col>
-          <Container>
-            <div className="d-flex flex-column w-100 justify-content-center py-3">
-              <span className="d-flex justify-content-between">
-                <h4 className="d-flex align-items-center">
-                  All Cashier Account
-                </h4>
-                <span>
-                  <Button
-                    className="font-semibold bg-[#D3A774] text-black"
-                    onClick={() => setShowModal("ModalCreateNewCashierAccount")}
-                  >
-                    Add New Account
-                  </Button>
-                </span>
+          <div className="d-flex flex-column w-100 justify-content-center py-3">
+            <span className="d-flex justify-content-between">
+              <h4 className="d-flex align-items-center">All Cashier Account</h4>
+              <span>
+                <Button
+                  variant="warning"
+                  className="font-semibold bg-[#D3A774] border-[#D3A774] text-black"
+                  onClick={() => setShowModal("ModalCreateNewCashierAccount")}
+                >
+                  Add New Account
+                </Button>
               </span>
-              <form className="mb-2">
-                <label className="mr-2">Search anyname:</label>
-                <input
-                  type="text"
-                  id="searchNameAccount"
-                  placeholder="username or fullname"
-                  onChange={(e) => {
-                    setSearchName(e.target.value);
-                    setCurrentPage(1);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") e.preventDefault();
-                  }}
-                  style={{
-                    border: "1px solid black",
-                    borderRadius: "10px",
-                    padding: "1px 8px",
-                  }}
-                />
-              </form>
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th className="d-xxs-none">#</th>
-                    <th className="d-xxs-none">Username</th>
-                    <th>Full Name</th>
-                    <th className="d-none d-sm-table-cell">Gender</th>
-                    <th>Account Status</th>
-                    <th className="d-none d-sm-table-cell">Account Creation</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cashier_account.length ? (
-                    cashier_account.map((account, index) => (
-                      <TableDataCashierAccount
-                        account={account}
-                        index={index}
-                        fetchCashierAccount={fetchCashierAccount}
-                        toastError={toastError}
-                        toastSuccess={toastSuccess}
-                      />
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan={6} className="text-center"></td>
-                    </tr>
-                  )}
-                </tbody>
-              </Table>
-            </div>
-            <div className="w-100 d-flex justify-content-center gap-2">
-              {page > 1
-                ? [...new Array(page)].map((val, index) => (
-                    <Button
-                      variant="warning"
-                      key={`buttonAccountManagement-` + index}
-                      onClick={() => {
-                        setCurrentPage(index + 1);
-                      }}
-                      className={
-                        currentPage === index + 1
-                          ? "bg-warning"
-                          : "bg-[#D3A774]"
-                      }
-                    >
-                      {index + 1}
-                    </Button>
+            </span>
+            <form className="my-2">
+              <label className="mr-2">Search anyname:</label>
+              <input
+                type="text"
+                id="searchNameAccount"
+                placeholder="username or fullname"
+                onChange={(e) => {
+                  setSearchName(e.target.value);
+                  setCurrentPage(1);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") e.preventDefault();
+                }}
+                style={{
+                  border: "1px solid black",
+                  borderRadius: "10px",
+                  padding: "1px 8px",
+                }}
+              />
+            </form>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th className="d-xxs-none">#</th>
+                  <th className="d-xxs-none">Username</th>
+                  <th>Full Name</th>
+                  <th className="d-none d-sm-table-cell">Gender</th>
+                  <th>Account Status</th>
+                  <th className="d-none d-sm-table-cell">Account Creation</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cashier_account.length ? (
+                  cashier_account.map((account, index) => (
+                    <TableDataCashierAccount
+                      account={account}
+                      index={index}
+                      fetchCashierAccount={fetchCashierAccount}
+                      toastError={toastError}
+                      toastSuccess={toastSuccess}
+                    />
                   ))
-                : null}
-            </div>
-          </Container>
+                ) : (
+                  <tr>
+                    <td colSpan={6} className="text-center"></td>
+                  </tr>
+                )}
+              </tbody>
+            </Table>
+          </div>
+          <div className="w-100 d-flex justify-content-center gap-2">
+            {page > 1
+              ? [...new Array(page)].map((val, index) => (
+                  <Button
+                    variant="warning"
+                    key={`buttonAccountManagement-` + index}
+                    onClick={() => {
+                      setCurrentPage(index + 1);
+                    }}
+                    className={
+                      currentPage === index + 1 ? "bg-warning" : "bg-[#D3A774]"
+                    }
+                  >
+                    {index + 1}
+                  </Button>
+                ))
+              : null}
+          </div>
         </Col>
       </Row>
     </div>

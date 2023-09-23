@@ -15,7 +15,7 @@ function Sidebar() {
         variant="warning"
         className="d-lg-none bg-[#D3A774]"
         onClick={handleShow}
-        style={{ position: "fixed", top: "10vh", zIndex: 2 }}
+        style={{ position: "fixed", bottom: "0", zIndex: 2, left: 0 }}
       >
         Menu
       </Button>
@@ -39,7 +39,7 @@ function Sidebar() {
               href="/account_management"
               className={
                 window.location.pathname === "/account_management"
-                  ? "bg-white rounded-md p-1 font-semibold"
+                  ? "bg-warning-subtle rounded-md p-1 font-semibold"
                   : null
               }
             >
@@ -49,7 +49,7 @@ function Sidebar() {
               href="/products"
               className={
                 window.location.pathname === "/products"
-                  ? "bg-white rounded-md p-1 font-semibold"
+                  ? "bg-warning-subtle rounded-md p-1 font-semibold"
                   : null
               }
             >
@@ -59,7 +59,7 @@ function Sidebar() {
               href="/categories"
               className={
                 window.location.pathname === "/categories"
-                  ? "bg-white rounded-md p-1 font-semibold"
+                  ? "bg-warning-subtle rounded-md p-1 font-semibold"
                   : null
               }
             >
@@ -79,7 +79,7 @@ function Sidebar() {
               href="/report"
               className={
                 window.location.pathname === "/report"
-                  ? "bg-white rounded-md p-1 font-semibold"
+                  ? "bg-warning-subtle rounded-md p-1 font-semibold"
                   : null
               }
             >

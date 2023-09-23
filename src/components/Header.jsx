@@ -18,16 +18,16 @@ export const Header = () => {
     <Navbar
       expand="lg"
       style={{ minHeight: "5vh" }}
-      className="py-3 bg-[#D3A774]"
+      className="bg-[#D3A774] py-0"
     >
       <Navbar.Brand
         href="/TheCoffeeSpace"
-        className="font-sans font-bold px-10 underline"
+        className="font-sans font-bold px-10"
       >
         Coffee Space <span className="pl-3"></span>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
+      <Navbar.Collapse id="basic-navbar-nav" className="text-right">
         <Nav className="me-auto">
           <Nav.Link
             href={
@@ -37,13 +37,13 @@ export const Header = () => {
                 ? "/TheCoffeeSpace"
                 : null
             }
-            className="font-sans font-bold text-black"
+            className="font-sans font-bold text-black mr-3"
           >
             Home
           </Nav.Link>
           {userSelector.id === 1 ? (
             <NavDropdown
-              className="font-sans font-bold text-black"
+              className="font-sans font-bold text-black mr-3 z-100"
               title="Actions"
               id="basic-nav-dropdown"
             >
@@ -78,7 +78,12 @@ export const Header = () => {
             </NavDropdown>
           ) : null}
         </Nav>
-        <div onClick={logout} type="button">
+        <div
+          onClick={logout}
+          type="button"
+          className="w-100 d-flex justify-content-end"
+          style={{ marginRight: "8px" }}
+        >
           <SVGLogOut />
         </div>
       </Navbar.Collapse>

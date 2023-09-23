@@ -1,15 +1,15 @@
-import { Container, Row, Col } from 'react-bootstrap';
-import { Header } from '../../components/Header';
-import Sidebar from '../../components/Sidebar';
-import { useEffect, useState } from 'react';
-import { CategoryList } from '../../components/category';
-import { Center, Flex } from '@chakra-ui/react';
-import { Button, ButtonGroup } from '@chakra-ui/react';
-import ReactPaginate from 'react-paginate';
-import { useDisclosure } from '@chakra-ui/react';
-import { ModalInputCategory } from '../../components/categorym';
-import { api } from '../../API/api';
-import './z.css';
+import { Container, Row, Col } from "react-bootstrap";
+import { Header } from "../../components/Header";
+import Sidebar from "../../components/Sidebar";
+import { useEffect, useState } from "react";
+import { CategoryList } from "../../components/category";
+import { Center, Flex } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
+import ReactPaginate from "react-paginate";
+import { useDisclosure } from "@chakra-ui/react";
+import { ModalInputCategory } from "../../components/categorym";
+import { api } from "../../API/api";
+import "./z.css";
 
 export const CategoriesPage = () => {
   const [categories, setCategories] = useState([]);
@@ -18,11 +18,11 @@ export const CategoriesPage = () => {
   const [totalPage, setTotalPage] = useState(1);
   const [lastOffset, setLastOffset] = useState(0);
 
-  const limit = 3;
+  const limit = 10;
 
   const fetchCategories = async () => {
     try {
-      const res = await api.get('/category/page', {
+      const res = await api.get("/category/q", {
         params: {
           page: lastOffset,
           limit,
@@ -43,45 +43,43 @@ export const CategoriesPage = () => {
   return (
     <>
       <Header />
-      <Row style={{ margin: '0', minHeight: '95vh', height: '100%' }}>
-        <Col xl={2} lg={2} className='bg-[#D3A774]'>
+      <Row style={{ margin: "0", minHeight: "94vh", height: "100%" }}>
+        <Col xl={2} lg={2} className="bg-[#D3A774] hidden-md">
           <Sidebar />
         </Col>
         <Col>
-          <Container>
-            <Flex justifyContent={'right'}>
-              <Button colorScheme='blue' onClick={onOpen}>
-                Add Category
-              </Button>
-            </Flex>
-            <CategoryList
-              categories={[...categories]}
-              fetchCategories={fetchCategories}
-            />
-            <ModalInputCategory
-              isOpen={isOpen}
-              onClose={onClose}
-              fetchCategories={fetchCategories}
-            />
+          <Flex justifyContent={"right"}>
+            <Button colorScheme="blue" onClick={onOpen}>
+              Add Category
+            </Button>
+          </Flex>
+          <CategoryList
+            categories={[...categories]}
+            fetchCategories={fetchCategories}
+          />
+          <ModalInputCategory
+            isOpen={isOpen}
+            onClose={onClose}
+            fetchCategories={fetchCategories}
+          />
 
-            <ReactPaginate
-              breakLabel='...'
-              nextLabel='>'
-              onPageChange={(e) => {
-                const newOffset = (e.selected * limit) % totalItem;
-                setLastOffset(newOffset);
-              }}
-              pageRangeDisplayed={3}
-              pageCount={totalPage}
-              previousLabel='<'
-              renderOnZeroPageCount={null}
-              containerClassName='pagination'
-              pageLinkClassName='page-num'
-              previousLinkClassName='page-num'
-              nextLinkClassName='page-num'
-              activeLinkClassName='active'
-            />
-          </Container>
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel=">"
+            onPageChange={(e) => {
+              const newOffset = (e.selected * limit) % totalItem;
+              setLastOffset(newOffset);
+            }}
+            pageRangeDisplayed={3}
+            pageCount={totalPage}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+            containerClassName="pagination"
+            pageLinkClassName="page-num"
+            previousLinkClassName="page-num"
+            nextLinkClassName="page-num"
+            activeLinkClassName="active"
+          />
         </Col>
       </Row>
     </>

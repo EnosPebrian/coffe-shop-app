@@ -68,7 +68,7 @@ export const ProductCardCashier = ({
       lg={4}
       md={6}
       xs={6}
-      className="mt-3"
+      className="mt-3 z-0"
       hidden={
         searchCategory === 0
           ? item?.productName.toLowerCase().match(searchKey)

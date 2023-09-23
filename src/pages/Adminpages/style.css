@@ -92,3 +92,9 @@
     background-color: black;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .hidden-md {
+    height: 0px;
+  }
+}

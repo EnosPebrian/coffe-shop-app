@@ -7,8 +7,22 @@ export const DailySalesList = ({
 }) => {
   return (
     <>
-      <input type="date" id="datefrom" onChange={handleInputForQueryString} />
-      <input type="date" id="dateto" onChange={handleInputForQueryString} />
+      <form className="d-flex gap-2 mb-2">
+        <label>Date from: </label>
+        <input
+          type="date"
+          id="datefrom"
+          onChange={handleInputForQueryString}
+          className="border px-2 rounded border-secondary"
+        />
+        <label>Date to: </label>
+        <input
+          type="date"
+          id="dateto"
+          onChange={handleInputForQueryString}
+          className="border px-2 rounded border-secondary"
+        />
+      </form>
       <Center>
         <Table striped bordered hover size="sm">
           <thead>

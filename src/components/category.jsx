@@ -1,42 +1,15 @@
-import { Center, Box, Grid, GridItem, useDisclosure } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { Center, useDisclosure } from "@chakra-ui/react";
 import { ModalInputCategory } from "./categorym";
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  TableContainer,
-} from "@chakra-ui/react";
+import { Table } from "react-bootstrap";
 
 export const CategoryCard = ({ category, fetchCategories }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Center
-        flexDir={"column"}
-        maxWidth={"233px"}
-        maxH={"239px"}
-        padding={"20px 0px"}
-        fontSize="14px"
-        onClick={onOpen}
-      >
-        <Box
-          fontWeight="500"
-          w={"100%"}
-          maxWidth={"273px"}
-          padding={"0px 20px"}
-        >
-          <Box marginBottom={"8px"}>
-            <h2 style={{ marginBottom: "8px" }}>{category.category_name}</h2>
-          </Box>
-        </Box>
-      </Center>
+      <h2 style={{ marginBottom: "8px" }} onClick={onOpen} type="button">
+        {category.category_name}
+      </h2>
       <ModalInputCategory
         isOpen={isOpen}
         onClose={onClose}
@@ -49,28 +22,30 @@ export const CategoryCard = ({ category, fetchCategories }) => {
 
 export const CategoryList = ({ categories = [], fetchCategories }) => {
   return (
-    <>
-      <TableContainer>
-        <Table variant="striped" colorScheme="blue">
-          <Thead>
-            <Tr>
-              <Th>Category</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {categories?.map((category, idx) => (
-              <Tr key={idx}>
-                <a>
-                  <CategoryCard
-                    category={category}
-                    fetchCategories={fetchCategories}
-                  />
-                </a>
-              </Tr>
-            ))}
-          </Tbody>
-        </Table>
-      </TableContainer>
-    </>
+    <Center>
+      <Table striped bordered hover style={{ maxWidth: "400px" }}>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Category</th>
+            <th>Total Products</th>
+          </tr>
+        </thead>
+        <tbody>
+          {categories?.map((category, idx) => (
+            <tr key={idx}>
+              <td style={{ width: "4px" }}>{idx + 1}</td>
+              <td>
+                <CategoryCard
+                  category={category}
+                  fetchCategories={fetchCategories}
+                />
+              </td>
+              <td></td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Center>
   );
 };

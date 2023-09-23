@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Container, Form } from "react-bootstrap";
-import loginBackgroundImage from "../assets/bgggg.png";
+import loginBackgroundImage from "../assets/bglogin.jpeg";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
@@ -86,75 +86,76 @@ export const Login = () => {
   }, [userSelector.role]);
 
   return (
-    <div>
-      <div className="bg-gray-800 text-white py-2 overflow-hidden animate-bounce">
-        <div className="marquee text-lg font-mono">MINI PROJECT 3 | POS</div>
-      </div>
-
-      <div className="flex flex-col-reverse md:flex-row">
-        <div
-          className="md:w-1/2 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${loginBackgroundImage})`,
-            height: "100vh",
-            opacity: "0.8",
-          }}
-        ></div>
-
-        <div className="w-full md:w-1/2 flex items-center justify-end pl-4 pr-4 bg-gradient-to-r from-sky-50 to-[#D3A774]">
-          <Container className="px-32">
-            <Card className="rounded-2xl p-4 items-center shadow-2xl max-w-md bg-transparent border-none">
-              <h1 className="text-2xl text-center font-sans font-bold mb-4">
-                Welcome
-              </h1>
-              <Form>
-                <Form.Group className="" controlId="UsernameLoginForm">
-                  <Form.Label className="font-sans font-semibold">
-                    Username
-                  </Form.Label>
+    <div
+      className="align-middle"
+      style={{
+        backgroundImage: `url(${loginBackgroundImage})`,
+        height: "100vh",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+    >
+      <Container className="h-100 d-flex align-items-center">
+        <div className="d-block" style={{ width: "25vw" }}></div>
+        <div>
+          <h1 className="text-4xl mb-5 font-sans font-bold">
+            THE COFFEE SPACE
+          </h1>
+          <Card
+            className="bg-transparent border-none d-flex justify-content-center align-items-center"
+            style={{ maxWidth: "350px" }}
+          >
+            <h1 className="text-2xl text-center font-sans font-bold mb-4">
+              Welcome
+            </h1>
+            <Form style={{ maxWidth: "300px" }}>
+              <Form.Group className="" controlId="UsernameLoginForm">
+                <Form.Label className="font-sans font-semibold">
+                  Username
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  onChange={formik.handleChange}
+                  autoFocus
+                />
+                <div className="text-red-500">{formik.errors.username}</div>
+              </Form.Group>
+              <Form.Group controlId="PasswordLoginForm">
+                <Form.Label className="font-sans font-semibold">
+                  Password
+                </Form.Label>
+                <div className="relative">
                   <Form.Control
-                    type="text"
-                    name="username"
-                    placeholder="Username"
+                    type={seePassword ? "text" : "password"}
+                    placeholder="Password"
+                    name="password"
                     onChange={formik.handleChange}
-                    autoFocus
                   />
-                  <div className="text-red-500">{formik.errors.username}</div>
-                </Form.Group>
-                <Form.Group controlId="PasswordLoginForm">
-                  <Form.Label className="font-sans font-semibold">
-                    Password
-                  </Form.Label>
-                  <div className="relative">
-                    <Form.Control
-                      type={seePassword ? "text" : "password"}
-                      placeholder="Password"
-                      name="password"
-                      onChange={formik.handleChange}
-                    />
-                    <span
-                      className="absolute right-2 top-2 cursor-pointer"
-                      onClick={() => setSeePassword(!seePassword)}
-                    >
-                      {seePassword ? "Hide" : "Show"}
-                    </span>
-                  </div>
-                  <div className="text-red-500">{formik.errors.password}</div>
-                  <div className="text-center mt-4">
-                    <Button
-                      className="bg-warning-subtle border-warning-subtle text-black font-sans font-semibold w-full"
-                      variant="warning"
-                      onClick={formik.handleSubmit}
-                    >
-                      Login
-                    </Button>
-                  </div>
-                </Form.Group>
-              </Form>
-            </Card>
-          </Container>
+                  <span
+                    className="absolute right-2 top-2 cursor-pointer"
+                    onClick={() => setSeePassword(!seePassword)}
+                  >
+                    {seePassword ? "Hide" : "Show"}
+                  </span>
+                </div>
+                <div className="text-red-500">{formik.errors.password}</div>
+                <div className="text-center mt-4">
+                  <Button
+                    className="bg-warning-subtle border-warning-subtle text-black font-sans font-semibold w-full"
+                    variant="warning"
+                    onClick={formik.handleSubmit}
+                  >
+                    Login
+                  </Button>
+                </div>
+              </Form.Group>
+            </Form>
+          </Card>
         </div>
-      </div>
+      </Container>
     </div>
   );
 };
