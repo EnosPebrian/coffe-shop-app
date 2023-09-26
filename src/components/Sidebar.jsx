@@ -19,7 +19,7 @@ function Sidebar() {
       >
         Menu
       </Button>
-      <div style={{ position: "sticky", top: "5vh" }}>
+      <div style={{ position: "sticky", top: "3vh" }}>
         <Offcanvas
           show={show}
           onHide={handleClose}
@@ -28,12 +28,12 @@ function Sidebar() {
         >
           <Offcanvas.Header closeButton className="bg-[#D3A774] text-dark">
             <Offcanvas.Title className="d-xxs-smallfont">
-              Administrator Menu
+              Administrator Sidebar
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="d-flex flex-column gap-3">
             <Offcanvas.Title className="d-xxs-smallfont mt-3">
-              Administrator Menu
+              Links:
             </Offcanvas.Title>
             <a
               href="/account_management"

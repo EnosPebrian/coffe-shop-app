@@ -3,4 +3,5 @@ export const constant = {
   logout: "LOGOUT",
   updateProfile: "UPDATE_PROFILE",
   success: "success",
+  DineInColor: ''
 };

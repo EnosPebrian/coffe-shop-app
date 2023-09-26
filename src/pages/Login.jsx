@@ -97,9 +97,9 @@ export const Login = () => {
       }}
     >
       <Container className="h-100 d-flex align-items-center">
-        <div className="d-block" style={{ width: "25vw" }}></div>
+        <div className="d-block d-xxs-none" style={{ width: "15vw" }}></div>
         <div>
-          <h1 className="text-4xl mb-5 font-sans font-bold">
+          <h1 className="text-4xl mb-5 font-sans font-bold text-center">
             THE COFFEE SPACE
           </h1>
           <Card

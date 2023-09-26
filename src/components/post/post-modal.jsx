@@ -21,6 +21,7 @@ import { api } from "../../API/api";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useSelector } from "react-redux";
+import { Col, Row } from "react-bootstrap";
 
 export const ModalInputProduct = ({
   product = { productName: "", categoryId: "", price: 0, stock: 0, desc: "" },
@@ -149,7 +150,7 @@ export const ModalInputProduct = ({
   }, [isOpen]);
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
       <ModalContent>
         <ModalHeader className="font-sans">
@@ -183,84 +184,97 @@ export const ModalInputProduct = ({
               <label htmlFor="image" className="cursor-pointer">
                 Choose Image
               </label>
-              <FormControl
-                id="productName"
-                isInvalid={
-                  formik.touched.productName && formik.errors.productName
-                }
-                maxW="300px"
-              >
-                <FormLabel>Product Name</FormLabel>
-                <Input
-                  type="text"
-                  {...formik.getFieldProps("productName")}
-                  onChange={(e) =>
-                    formik.setFieldValue("productName", e.target.value)
-                  }
-                  placeholder="Product Name"
-                />
-                <FormErrorMessage>{formik.errors.productName}</FormErrorMessage>
-              </FormControl>
-              <FormControl
-                maxW="300px"
-                isInvalid={
-                  formik.errors.categoryId && formik.touched.categoryId
-                }
-              >
-                <FormLabel>Category</FormLabel>
-                <OptionList
-                  categories={[...categories]}
-                  fetchCategories={fetchCategories}
-                  formik={formik}
-                />
-                <FormErrorMessage>{formik.errors.categoryId}</FormErrorMessage>
-              </FormControl>
-              <FormControl
-                id="price"
-                isInvalid={formik.touched.price && formik.errors.price}
-                maxW="300px"
-              >
-                <FormLabel>Price</FormLabel>
-                <Input
-                  type="number"
-                  {...formik.getFieldProps("price")}
-                  onChange={(e) =>
-                    formik.setFieldValue("price", e.target.value)
-                  }
-                  placeholder="Price"
-                />
-                <FormErrorMessage>{formik.errors.price}</FormErrorMessage>
-              </FormControl>
-              <FormControl
-                id="stock"
-                isInvalid={formik.touched.stock && formik.errors.stock}
-                maxW="300px"
-              >
-                <FormLabel>Stock</FormLabel>
-                <Input
-                  type="number"
-                  {...formik.getFieldProps("stock")}
-                  onChange={(e) =>
-                    formik.setFieldValue("stock", e.target.value)
-                  }
-                  placeholder="Stock"
-                />
-                <FormErrorMessage>{formik.errors.stock}</FormErrorMessage>
-              </FormControl>
-              <FormControl
-                id="desc"
-                isInvalid={formik.touched.desc && formik.errors.desc}
-                maxW="300px"
-              >
-                <FormLabel>Description</FormLabel>
-                <Input
-                  type="text"
-                  {...formik.getFieldProps("desc")}
-                  onChange={(e) => formik.setFieldValue("desc", e.target.value)}
-                  placeholder="Description"
-                />
-                <FormErrorMessage>{formik.errors.desc}</FormErrorMessage>
-              </FormControl>
+              <Row className="m-0 gap-2">
+                <Col className="m-0 p-0">
+                  <FormControl
+                    id="productName"
+                    isInvalid={
+                      formik.touched.productName && formik.errors.productName
+                    }
+                    maxW="300px"
+                  >
+                    <FormLabel>Product Name</FormLabel>
+                    <Input
+                      type="text"
+                      {...formik.getFieldProps("productName")}
+                      onChange={(e) =>
+                        formik.setFieldValue("productName", e.target.value)
+                      }
+                      placeholder="Product Name"
+                    />
+                    <FormErrorMessage>
+                      {formik.errors.productName}
+                    </FormErrorMessage>
+                  </FormControl>
+                  <FormControl
+                    maxW="300px"
+                    isInvalid={
+                      formik.errors.categoryId && formik.touched.categoryId
+                    }
+                  >
+                    <FormLabel>Category</FormLabel>
+                    <OptionList
+                      categories={[...categories]}
+                      fetchCategories={fetchCategories}
+                      formik={formik}
+                    />
+                    <FormErrorMessage>
+                      {formik.errors.categoryId}
+                    </FormErrorMessage>
+                  </FormControl>
+                  <FormControl
+                    id="price"
+                    isInvalid={formik.touched.price && formik.errors.price}
+                    maxW="300px"
+                  >
+                    <FormLabel>Price</FormLabel>
+                    <Input
+                      type="number"
+                      {...formik.getFieldProps("price")}
+                      onChange={(e) =>
+                        formik.setFieldValue("price", e.target.value)
+                      }
+                      placeholder="Price"
+                    />
+                    <FormErrorMessage>{formik.errors.price}</FormErrorMessage>
+                  </FormControl>
+                </Col>
+                <Col className="m-0 p-0">
+                  <FormControl
+                    id="stock"
+                    isInvalid={formik.touched.stock && formik.errors.stock}
+                    maxW="300px"
+                  >
+                    <FormLabel>Stock</FormLabel>
+                    <Input
+                      type="number"
+                      {...formik.getFieldProps("stock")}
+                      onChange={(e) =>
+                        formik.setFieldValue("stock", e.target.value)
+                      }
+                      placeholder="Stock"
+                    />
+                    <FormErrorMessage>{formik.errors.stock}</FormErrorMessage>
+                  </FormControl>
+                  <FormControl
+                    id="desc"
+                    isInvalid={formik.touched.desc && formik.errors.desc}
+                    maxW="300px"
+                  >
+                    <FormLabel>Description</FormLabel>
+                    <Input
+                      as="textarea"
+                      height="112px"
+                      {...formik.getFieldProps("desc")}
+                      onChange={(e) =>
+                        formik.setFieldValue("desc", e.target.value)
+                      }
+                      placeholder="Description"
+                    />
+                    <FormErrorMessage>{formik.errors.desc}</FormErrorMessage>
+                  </FormControl>
+                </Col>
+              </Row>
             </Center>
           </ModalBody>
           <ModalFooter>

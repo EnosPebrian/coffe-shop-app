@@ -80,7 +80,11 @@ export const ModalCreateNewCashierAccount = ({
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        <Button
+          className="bg-secondary"
+          variant="secondary"
+          onClick={handleClose}
+        >
           Close
         </Button>
         <Button

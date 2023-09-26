@@ -6,12 +6,43 @@
   font-size: calc(8px + 1vw);
 }
 
+@media screen and (max-width: 220px) {
+  #searchNameAccount {
+    max-width: 160px;
+  }
+  .navbar-brand {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+@media screen and (max-width: 287px) {
+  .navbar-brand {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  button.btn {
+    padding: 0 !important;
+  }
+  #root > div > div > div.col.col-xl-2.col-lg-3.col-4 > div {
+    padding: 0 !important;
+    font-size: 7px;
+  }
+  #root > div > div > div.col.col-xl-2.col-lg-3.col-4 > div > span {
+    font-size: 10px !important;
+  }
+}
+
 @media screen and (max-width: 340px) {
   .d-xxs-none {
-    display: none;
+    display: none !important;
+  }
+  .hidden-md {
+    height: 0px;
   }
   Table {
-    font-size: 8px;
+    font-size: 12px;
   }
   h3 {
     font-size: 10px;
@@ -20,7 +51,7 @@
     font-size: 8px !important;
   }
   .d-xxs-supersmallfont {
-    font-size: 4px !important;
+    font-size: 6px !important;
   }
 
   div.list-group-item,
@@ -36,6 +67,37 @@
 }
 
 @media screen and (max-width: 429px) {
+  .d-xxs-none {
+    /* max-width: 2vh; */
+  }
+
+  #root
+    > div
+    > div.col
+    > div
+    > div
+    > table
+    > tbody
+    > tr
+    > td.border.px-4.py-2.pricebody {
+    display: none;
+  }
+
+  #root
+    > div
+    > div.col
+    > div
+    > div:nth-child(1)
+    > table
+    > thead
+    > tr
+    > th.px-4.py-2.priceheading {
+    display: none;
+  }
+
+  .hidden-md {
+    height: 0px;
+  }
   .d-xxs-smallfont.btn.btn-info {
     padding: 0 !important;
   }
@@ -50,6 +112,14 @@
 }
 
 @media screen and (max-width: 650px) {
+  #root > div > div.col > div > div:nth-child(1) > table > thead > tr > th,
+  #root > div > div.col > div > div:nth-child(1) > table > tbody > tr > td {
+    padding: 2px 4px !important;
+  }
+
+  .hidden-md {
+    height: 0px;
+  }
   .col,
   .container,
   .card {
@@ -72,6 +142,11 @@
 }
 
 @media screen and (max-width: 820px) {
+  #root > div > div.col > div > div:nth-child(1) > table > thead > tr > th,
+  #root > div > div.col > div > div:nth-child(1) > table > tbody > tr > td {
+    padding: 2px 4px !important;
+  }
+
   .card {
     padding: 0 !important;
     margin: 0 !important;
@@ -96,5 +171,8 @@
 @media screen and (max-width: 992px) {
   .hidden-md {
     height: 0px;
+  }
+  #root > div.row {
+    min-height: auto !important;
   }
 }

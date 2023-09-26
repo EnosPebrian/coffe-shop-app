@@ -504,7 +504,7 @@ export const CashierLandingPage = () => {
         ) : (
           <Col xl={2} lg={3} xs={4} className="col">
             <Button
-              className="position-relative w-100 bg-[#D3A774] border-[#D3A774] text-dark"
+              className="position-relative w-100 bg-[#D3A774] border-[#D3A774] text-dark d-xxs-smallfont"
               variant="warning"
               onClick={() => setNewTransaction(!newTransaction)}
             >
@@ -513,7 +513,7 @@ export const CashierLandingPage = () => {
             {newTransaction ? (
               <div className="d-flex flex-column gap-2 my-2">
                 <Button
-                  variant="text-dark bg-warning-subtle border-[#D3A774]"
+                  variant="text-dark bg-warning-subtle border-[#D3A774] d-xxs-smallfont"
                   onClick={() => createNewTransaction(1)}
                 >
                   Dine In
@@ -521,13 +521,13 @@ export const CashierLandingPage = () => {
                 <Button
                   onClick={() => createNewTransaction(2)}
                   variant="success"
-                  className="text-dark bg-danger-subtle border-[#D3A774]"
+                  className="text-dark bg-danger-subtle border-[#D3A774] d-xxs-smallfont"
                 >
                   Take Away
                 </Button>
                 <Button
                   variant="warning"
-                  className="bg-warning border-[#D3A774]"
+                  className="bg-warning border-[#D3A774] d-xxs-smallfont"
                   onClick={() => createNewTransaction(3)}
                 >
                   Cathering
@@ -535,59 +535,60 @@ export const CashierLandingPage = () => {
               </div>
             ) : null}
             <ListGroup variant="flush" className="mt-2 text-center">
-              <span>
+              <span className="d-xxs-smallfont">
                 Outstanding Transaction: <b>{totalOutstandingTransaction}</b>
               </span>
               <ListGroup.Item key={`group-item`}>
-                {outstandingTransaction.length &&
-                  outstandingTransaction.map((val, index) => (
-                    <div key={`transaction-${index}`} className="d-flex mt-2">
-                      <span
-                        className="d-flex align-items-center justify-content-center"
-                        type="button"
-                        onClick={() => {
-                          setShowModal(val.id);
-                        }}
-                      >
-                        <SVGtrash />
-                      </span>
-                      <ModalConfirmationPayResetDeleteTransaction
-                        setShow={setShowModal}
-                        show={showModal}
-                        handleDeleteTransaction={handleDeleteTransaction}
-                      />
-                      <div
-                        className={`d-flex py-1 px-2 justify-content-center rounded-pill gap-1 w-100 ${
-                          val.order_type === 1
-                            ? "bg-warning-subtle"
-                            : val.order_type === 2
-                            ? "bg-danger-subtle"
-                            : val.order_type === 3
-                            ? "bg-warning"
-                            : null
-                        }`}
-                        type="button"
-                        onClick={() => {
-                          if (!localStorage.getItem("cs-token"))
-                            return toast({
-                              status: "warning",
-                              title: "Login first",
-                              isClosable: true,
-                              duration: 2000,
-                              position: "top",
-                              description: (
-                                <a href="/login">Sign in Click Here!</a>
-                              ),
-                            });
-                          setShowTransaction(val.id);
-                        }}
-                      >
-                        <span>Order</span>
-                        <span>{val.id}</span>
-                        <span>{val.name}</span>
+                {outstandingTransaction.length
+                  ? outstandingTransaction.map((val, index) => (
+                      <div key={`transaction-${index}`} className="d-flex mt-2">
+                        <span
+                          className="d-flex align-items-center justify-content-center"
+                          type="button"
+                          onClick={() => {
+                            setShowModal(val.id);
+                          }}
+                        >
+                          <SVGtrash />
+                        </span>
+                        <ModalConfirmationPayResetDeleteTransaction
+                          setShow={setShowModal}
+                          show={showModal}
+                          handleDeleteTransaction={handleDeleteTransaction}
+                        />
+                        <div
+                          className={`d-flex py-1 px-2 justify-content-center rounded-pill gap-1 w-100 ${
+                            val.order_type === 1
+                              ? "bg-warning-subtle"
+                              : val.order_type === 2
+                              ? "bg-danger-subtle"
+                              : val.order_type === 3
+                              ? "bg-warning"
+                              : null
+                          }`}
+                          type="button"
+                          onClick={() => {
+                            if (!localStorage.getItem("cs-token"))
+                              return toast({
+                                status: "warning",
+                                title: "Login first",
+                                isClosable: true,
+                                duration: 2000,
+                                position: "top",
+                                description: (
+                                  <a href="/login">Sign in Click Here!</a>
+                                ),
+                              });
+                            setShowTransaction(val.id);
+                          }}
+                        >
+                          <span>Order</span>
+                          <span>{val.id}</span>
+                          <span>{val.name}</span>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))
+                  : "No active transaction"}
               </ListGroup.Item>
             </ListGroup>
           </Col>

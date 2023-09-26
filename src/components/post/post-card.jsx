@@ -58,7 +58,7 @@ export const PostCard = ({ product, fetchProducts }) => {
           edit={"edit"}
           fetchProducts={fetchProducts}
         />
-        <td className="border px-4 py-2">{product.id}</td>
+        <td className="border px-4 py-2 d-xxs-none">{product.id}</td>
         <td className="border">
           <img
             src={`${API_URL}/public/product/${product.imageName}`}
@@ -72,24 +72,26 @@ export const PostCard = ({ product, fetchProducts }) => {
         <td className="border px-4 py-2 d-none d-sm-table-cell">
           {product?.Category?.category_name}
         </td>
-        <td className="border px-4 py-2 d-none d-sm-table-cell">
-          Rp. {product.price}
+        <td className="border px-4 py-2 pricebody">
+          IDR{Number(product.price).toLocaleString("id-ID")}
         </td>
-        <td className="border px-4 py-2 d-none d-sm-table-cell">
-          {product.stock}
+        <td className="border px-4 py-2">
+          {Number(product.stock).toLocaleString("id-ID")}
         </td>
-        <td className="border px-4 py-2 d-none d-sm-table-cell">
+        <td
+          className="border px-4 py-2 d-none d-xl-table-cell"
+          style={{ minWidth: "210px" }}
+        >
           {product.desc}
         </td>
         <td className="border px-4 py-2">
           <EditIcon
-            className="d-none d-sm-table-cell"
             boxSize={5}
             cursor={"pointer"}
             onClick={() => disclosure.onOpen()}
           />
         </td>
-        <td className="d-none d-sm-table-cell border px-4 py-2">
+        <td className="border px-4 py-2 d-xxs-none">
           <DeleteIcon
             color={"red.500"}
             boxSize={5}

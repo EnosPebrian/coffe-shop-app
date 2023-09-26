@@ -115,7 +115,6 @@ export const CashierAccountManagement = () => {
         setShowModal={setShowModal}
         formik={formik}
       />
-
       <Row style={{ margin: "0", minHeight: "94vh", height: "100%" }}>
         <Col xl={2} lg={2} className="bg-[#D3A774] hidden-md">
           <Sidebar />
@@ -139,7 +138,7 @@ export const CashierAccountManagement = () => {
               <input
                 type="text"
                 id="searchNameAccount"
-                placeholder="username or fullname"
+                placeholder="username/fullname"
                 onChange={(e) => {
                   setSearchName(e.target.value);
                   setCurrentPage(1);

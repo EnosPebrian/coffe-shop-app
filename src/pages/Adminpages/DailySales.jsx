@@ -1,17 +1,16 @@
 import { Header } from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { api } from "../../API/api";
 import { DailySalesList } from "../../components/dailysales";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Center } from "@chakra-ui/layout";
 
 export const DailySales = () => {
   const [transactions, setTransactions] = useState([]);
   const [page, setPage] = useState(0);
   const params = useParams();
-  const [queryString, setQueryString] = useState("?");
 
   const handleInputForQueryString = (page) => {
     let tempQStr = "";
@@ -56,7 +55,7 @@ export const DailySales = () => {
               transactions={[...transactions]}
               handleInputForQueryString={handleInputForQueryString}
             />
-            <Center>
+            <Center className="mt-2">
               {page > 1 &&
                 [...new Array(page)].map((val, index) => (
                   <Button

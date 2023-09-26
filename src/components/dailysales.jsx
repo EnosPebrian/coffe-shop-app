@@ -1,10 +1,15 @@
-import Table from "react-bootstrap/Table";
-import { Center } from "@chakra-ui/layout";
+import { Row } from "react-bootstrap";
+import { CardTransaction } from "../pages/Adminpages/CardTransaction";
+import { useState } from "react";
+import { ModalShowTransaction } from "../pages/Adminpages/ModalShowTransaction";
 
 export const DailySalesList = ({
   transactions = [],
   handleInputForQueryString,
 }) => {
+  const [transactionData, setTransactionData] = useState({});
+  const [show, setShow] = useState(false);
+
   return (
     <>
       <form className="d-flex gap-2 mb-2">
@@ -14,6 +19,7 @@ export const DailySalesList = ({
           id="datefrom"
           onChange={handleInputForQueryString}
           className="border px-2 rounded border-secondary"
+          style={{ fontSize: "calc(8px + 0.5vw)" }}
         />
         <label>Date to: </label>
         <input
@@ -21,10 +27,31 @@ export const DailySalesList = ({
           id="dateto"
           onChange={handleInputForQueryString}
           className="border px-2 rounded border-secondary"
+          style={{ fontSize: "calc(8px + 0.5vw)" }}
         />
       </form>
-      <Center>
-        <Table striped bordered hover size="sm">
+      <ModalShowTransaction
+        transactionData={transactionData}
+        show={show}
+        setShow={setShow}
+      />
+      <Row className="m-0 p-0 row-gap-2 flex-wrap">
+        {transactions.length &&
+          transactions.map((transaction, idx) => (
+            <CardTransaction
+              transaction={transaction}
+              index={idx}
+              setShow={setShow}
+              setTransactionData={setTransactionData}
+            />
+          ))}
+      </Row>
+    </>
+  );
+};
+
+{
+  /* <Table striped bordered hover size="sm">
           <thead>
             <tr>
               <th>Date</th>
@@ -65,17 +92,8 @@ export const DailySalesList = ({
                     </tbody>
                   </Table>
                 </td>
-                {/* {transaction.Transaction_details.map((detail) => (
-                <div>
-                  {detail.Product.productName}*{detail.qty}={detail.price}
-                  +tax10%
-                </div> */}
-                {/* ))} */}
               </tr>
             ))}
           </tbody>
-        </Table>
-      </Center>
-    </>
-  );
-};
+        </Table> */
+}

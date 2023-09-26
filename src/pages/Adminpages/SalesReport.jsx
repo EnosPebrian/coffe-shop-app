@@ -1,14 +1,31 @@
 import React, { useEffect, useState } from "react";
-import Chart from "react-apexcharts";
 import { Header } from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
 import { api } from "../../API/api";
 import { useSelector } from "react-redux";
-import { Col, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 export const SalesReportPage = () => {
   const userSelector = useSelector((state) => state.auth);
-  const [totalByDate, setTotalByDate] = useState([]);
+  const [dataset, setDataset] = useState([]);
   const [dateAxis, setDateAxis] = useState([]);
 
   const handleQueryDate = () => {
@@ -25,8 +42,8 @@ export const SalesReportPage = () => {
           dateto,
         },
       });
-      setTotalByDate(data.totalByDate);
-      setDateAxis(data.date);
+      setDataset(Object.values(data));
+      setDateAxis(Object.keys(data));
     } catch (error) {
       console.error("Error fetching report:", error);
     }
@@ -36,21 +53,49 @@ export const SalesReportPage = () => {
     fetchReport();
   }, []);
 
+  const data = {
+    labels: dateAxis,
+    datasets: [
+      {
+        label: "Dine In",
+        data: dataset.map((val) => val[1]),
+        borderColor: `rgb(255, 243, 205)`,
+        backgroundColor: `rgb(255, 243, 205)`,
+      },
+      {
+        label: "Take Away",
+        data: dataset.map((val) => val[2]),
+        borderColor: `#F8D7DA`,
+        backgroundColor: `#F8D7DA`,
+      },
+      {
+        label: "Catering",
+        data: dataset.map((val) => val[3]),
+        borderColor: `#FFC107`,
+        backgroundColor: `#FFC107`,
+      },
+    ],
+  };
+
   const options = {
-    chart: {
-      id: "basic-bar",
+    plugins: {
+      title: {
+        display: true,
+        text: "Revenue Dashboard",
+      },
     },
-    xaxis: {
-      categories: dateAxis,
+    responsive: true,
+    scales: {
+      // x: {
+      //   stacked: true,
+      // },
+      // y: {
+      //   stacked: true,
+      // },
     },
   };
 
-  const series = [
-    {
-      name: "Total Sales",
-      data: totalByDate,
-    },
-  ];
+  console.log(data);
 
   return (
     <>
@@ -59,31 +104,35 @@ export const SalesReportPage = () => {
         <Col xl={2} lg={2} className="bg-[#D3A774] hidden-md">
           <Sidebar />
         </Col>
-        <Col>
-          <div className="flex-grow">
-            <h1 className="font-sans font-bold text-center py-4 text-2xl">
+        <Col lg={10} className="mt-3">
+          <div className="align-items-center justify-content-center d-flex flex-column gap-2">
+            <h1 className="font-sans font-bold text-center text-2xl">
               Graph Sales Data
             </h1>
-            <div className="my-4">
-              <label className="font-sans font-semibold px-3">Date from:</label>
-              <input
-                id="datefrom-report-graphic"
-                type="date"
-                onChange={handleQueryDate}
-                className="px-2 py-1 border rounded-md border-gray-300"
-              />
+            <div className="flex-grow d-flex">
+              <div>
+                <label className="font-sans font-semibold px-3">
+                  Date from:
+                </label>
+                <input
+                  id="datefrom-report-graphic"
+                  type="date"
+                  onChange={handleQueryDate}
+                  className="px-2 py-1 border rounded-md border-gray-300"
+                />
+              </div>
+              <div>
+                <label className="font-sans font-semibold px-3">Date to:</label>
+                <span className="ml-5"></span>
+                <input
+                  id="dateto-report-graphic"
+                  type="date"
+                  onChange={handleQueryDate}
+                  className="px-2 py-1 border rounded-md border-gray-300"
+                />
+              </div>
             </div>
-            <div className="my-4">
-              <label className="font-sans font-semibold px-3">Date to:</label>
-              <span className="ml-5"></span>
-              <input
-                id="dateto-report-graphic"
-                type="date"
-                onChange={handleQueryDate}
-                className="px-2 py-1 border rounded-md border-gray-300"
-              />
-            </div>
-            <Chart options={options} series={series} type="bar" height="350" />
+            <Bar options={options} data={data} />
           </div>
         </Col>
       </Row>

@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Header } from "../../components/Header";
 import { Flex, useDisclosure, Center } from "@chakra-ui/react";
 import add50 from "../../assets/icons8-plus.svg";
-
+import "../Adminpages/style.css";
 import Sidebar from "../../components/Sidebar";
 import { PostList } from "../../components/post/post-list";
 
@@ -17,11 +17,10 @@ export const AdminLandingPage = ({ search }) => {
           <Sidebar />
         </Col>
         <Col>
-          <Center alignItems={"flex-start"} marginTop={"35px"}>
+          <div className="flex w-100 h-100 justify-content-center mt-4">
             <PostList {...disclosure} />
             <Flex justifyContent={"right"} bgColor={"blue"}>
               <img
-                className="d-none d-sm-table-cell"
                 src={add50}
                 alt=""
                 style={{
@@ -36,7 +35,7 @@ export const AdminLandingPage = ({ search }) => {
                 onClick={() => disclosure.onOpen()}
               />
             </Flex>
-          </Center>
+          </div>
         </Col>
       </Row>
     </>

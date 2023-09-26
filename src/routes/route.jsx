@@ -1,4 +1,4 @@
-import { AdminLandingPage } from "../pages/Adminpages/AdminLandingPage";
+import { AdminLandingPage } from "../pages/Adminpages/Product";
 import { CashierAccountManagement } from "../pages/Adminpages/CashierAccountManagement";
 import { SalesReportPage } from "../pages/Adminpages/SalesReport";
 import { CashierLandingPage } from "../pages/CashierPages/CashierLandingPage";
@@ -81,5 +81,4 @@ export const routes = [
       </ProtectedPage>
     )
   ),
-
 ];
