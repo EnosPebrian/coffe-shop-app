@@ -86,16 +86,14 @@ export const SalesReportPage = () => {
     },
     responsive: true,
     scales: {
-      // x: {
-      //   stacked: true,
-      // },
-      // y: {
-      //   stacked: true,
-      // },
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true,
+      },
     },
   };
-
-  
 
   return (
     <>
