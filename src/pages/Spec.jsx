@@ -1,6 +1,7 @@
 import { Button, Container, Table } from "react-bootstrap";
 import { Header } from "../components/Header";
 import SpecImage from "../assets/miniproject 3.png";
+import "../pages/Adminpages/style.css";
 
 const dataUser = [
   {
@@ -66,7 +67,7 @@ export const Spec = () => {
     <>
       <Header />
       <Container style={{ minHeight: "94vh" }}>
-        <div className="d-flex flex-column align-items-center justify-content-center gap-4">
+        <div className="d-flex flex-column align-items-center justify-content-center gap-4 text-center">
           <h1 style={{ fontSize: "24px" }}>The Coffee Space App</h1>
           <h2 style={{ fontSize: "20px" }}>Application spesification</h2>
           <img src={SpecImage} />
@@ -75,26 +76,38 @@ export const Spec = () => {
           <Button className="bg-[#D3A774]" variant="warning">
             <a href="/login">Sign in</a>
           </Button>
-          <Table striped hover bordered>
+          <Table hover bordered>
             <thead>
               <tr>
-                <th>No</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Status Account</th>
-                <th>Role</th>
+                <th className="td-cashier-page">No</th>
+                <th className="td-cashier-page">Username</th>
+                <th className="td-cashier-page">Password</th>
+                <th className="td-cashier-page">Status Account</th>
+                <th className="td-cashier-page">Role</th>
               </tr>
             </thead>
             <tbody>
               {dataUser.map((user, index) => (
                 <tr key={`user` + index}>
-                  <td>{index + 1}</td>
-                  <td>{user.username}</td>
-                  <td>{user.password}</td>
-                  <td className={user.isActive ? null : "bg-danger-subtle"}>
+                  <td className="td-cashier-page">{index + 1}</td>
+                  <td className="td-cashier-page">{user.username}</td>
+                  <td className="td-cashier-page">{user.password}</td>
+                  <td
+                    className={
+                      user.isActive
+                        ? "td-cashier-page"
+                        : "bg-danger-subtle td-cashier-page"
+                    }
+                  >
                     {user.isActive ? "Active" : "Disabled"}
                   </td>
-                  <td className={user.role === 1 ? "bg-warning-subtle" : null}>
+                  <td
+                    className={
+                      user.role === 1
+                        ? "bg-warning-subtle td-cashier-page"
+                        : "td-cashier-page"
+                    }
+                  >
                     {user.role === 1 ? "admin" : "cashier"}
                   </td>
                 </tr>
