@@ -95,7 +95,7 @@ export const SalesReportPage = () => {
     },
   };
 
-  console.log(data);
+  
 
   return (
     <>

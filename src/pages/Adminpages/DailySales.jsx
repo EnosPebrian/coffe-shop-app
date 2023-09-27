@@ -30,7 +30,6 @@ export const DailySales = () => {
   const fetchTransactions = async (queryString) => {
     try {
       const res = await api.get("/transactions/invoice?" + queryString);
-      console.log(res.data);
       setTransactions([...res.data.data]);
       setPage(res.data.number_of_page);
     } catch (err) {

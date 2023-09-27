@@ -7,6 +7,7 @@ import { Redirect } from "../pages/Redirect";
 import { ProtectedPage } from "./ProtectedPage";
 import { CategoriesPage } from "../pages/Adminpages/CategoriesPage";
 import { DailySales } from "../pages/Adminpages/DailySales";
+import { Spec } from "../pages/Spec";
 
 class RouteClass {
   constructor(path = "", element) {
@@ -16,17 +17,8 @@ class RouteClass {
 }
 
 export const routes = [
-  new RouteClass("/", <Redirect />),
-  new RouteClass("/login", <Login />),
-  // new RouteClass(
-  //   "/admin/landing_page",
-  //   (
-  //     <ProtectedPage needLogin={true} AdminOnly={true}>
-  //       <AdminLandingPage />
-  //     </ProtectedPage>
-  //   )
-  // ),
-  new RouteClass("/", <Redirect />),
+  // new RouteClass("/", <Redirect />),
+  new RouteClass("/", <Spec />),
   new RouteClass("/login", <Login />),
   new RouteClass(
     "/account_management",

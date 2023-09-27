@@ -53,7 +53,6 @@ export const CashierAccountManagement = () => {
           },
         }
       );
-      console.log(data);
       setCashier_account(data.rows);
       setPage(data.page);
     } catch (err) {
